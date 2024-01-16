@@ -2,7 +2,7 @@ import './Results.scss';
 
 const Results = ({ data }) => {
   return (
-    <section>
+    <section className='results'>
       <pre>{data ? JSON.stringify(data, undefined, 2) : null }</pre>
     </section>
   )

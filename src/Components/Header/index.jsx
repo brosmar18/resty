@@ -2,7 +2,7 @@ import './Header.scss';
 
 const Header = () => {
   return (
-    <header>
+    <header className='header'>
       <h1>RESTy</h1>
     </header>
   );
