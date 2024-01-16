@@ -4,9 +4,13 @@ const Form = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    // Gets value from the input field
+    const url = e.target.url.value || 'https://pokeapi.co/api/v2/pokemon';
+    
     const formData = {
       method: "GET",
-      url: "https://pokeapi.co/api/v2/pokemon",
+      url: url,
     };
     props.handleApiCall(formData);
   };
