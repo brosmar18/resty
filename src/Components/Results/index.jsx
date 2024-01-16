@@ -1,13 +1,15 @@
-import React from 'react';
+import './Results.scss';
 
-class Results extends React.Component {
-  render() {
-    return (
-      <section>
-        <pre>{this.props.data ? JSON.stringify(this.props.data, undefined, 2) : null}</pre>
-      </section>
-    );
-  }
+const Results = ({ data, requestParams }) => {
+  return (
+    <section className="results">
+      <div className='results__text'>
+        <p><span className="results__method-label">Method:</span> {requestParams.method}</p>
+        <p><span className="results__url-label">URL:</span> {requestParams.url}</p>
+      </div>
+      <code>{data ? JSON.stringify(data, undefined, 2) : null}</code>
+    </section>
+  )
 }
 
 export default Results;
