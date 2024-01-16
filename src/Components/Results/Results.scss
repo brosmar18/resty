@@ -1,4 +1,54 @@
 .results {
     grid-area: results;
-    background-color: lightgreen;
-}
+    background-color: #f8f8f8;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 1rem;
+    overflow: auto;
+    max-height: 600px;
+  
+    .results__text {
+      p {
+        margin: 0.5rem 0;
+        color: #333;
+        font-weight: bold;
+  
+        .results__method-label {
+          color: #007bff;
+        }
+  
+        .results__url-label {
+          color: #28a745;
+        }
+      }
+    }
+  }
+  
+  code {
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #333;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  @media (max-width: 768px) {
+    .results {
+      padding: 0.5rem;
+  
+      .results__text {
+        p {
+          font-size: 0.9rem;
+        }
+      }
+  
+      code {
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
