@@ -27,13 +27,14 @@ const Form = (props) => {
       <h2>RESTy</h2>
       <form onSubmit={handleSubmit}>
         <div className='form__input'>
-          <input name='url' type='text' />
+          <input name='url' type='text' data-testid='url-input' />
           <label>Enter URL!</label>
         </div>
-        <div className='methods'>
+        <div className='methods' data-testid='methods'>
           {['GET', 'POST', 'PUT', 'DELETE'].map((m) => (
             <span key={m} 
                   id={m.toLowerCase()} 
+                  data-testid={`${m.toLowerCase()}-method`}
                   className={method === m ? 'active' : ''} 
                   onClick={() => handleMethodChange(m)}>
               {m}
@@ -41,9 +42,9 @@ const Form = (props) => {
           ))}
         </div>
         {(method === 'POST' || method === 'PUT') && (
-          <textarea name='body' onChange={(e) => setBody(e.target.value)} />
+          <textarea name='body' data-testid='body-textarea' onChange={(e) => setBody(e.target.value)} />
         )}
-        <button type='submit' className='btn'>Go!</button>
+        <button type='submit' className='btn' data-testid='submit-button'>Go!</button>
       </form>
     </div>
   );
