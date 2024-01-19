@@ -41,15 +41,11 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header />
-      <Form handleApiCall={callApi} />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <Results data={data} requestParams={requestParams} />
-      )}
-      <Footer />
-    </div>
+    <Header />
+    <Form handleApiCall={callApi} />
+    <Results data={data} requestParams={requestParams} isLoading={isLoading} />
+    <Footer />
+  </div>
   );
 };
 
