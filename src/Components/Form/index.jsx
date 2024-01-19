@@ -23,7 +23,7 @@ const Form = (props) => {
   };
 
   return (
-    <div className='form'>
+    <div data-testid='form' className='form'>
       <h2>RESTy</h2>
       <form onSubmit={handleSubmit}>
         <div className='form__input'>
