@@ -11,7 +11,7 @@ const Results = ({ data, requestParams, isLoading }) => {
             {requestParams.method && <p><span className="results__method-label">Method:</span> {requestParams.method}</p>}
             {requestParams.url && <p><span className="results__url-label">URL:</span> {requestParams.url}</p>}
           </div>
-          <pre>{data ? JSON.stringify(data, null, 2) : 'No Data'}</pre>
+          <code>{data ? JSON.stringify(data, null, 2) : 'No Data'}</code>
         </>
       )}
     </section>
