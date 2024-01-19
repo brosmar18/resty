@@ -40,7 +40,7 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <div data-testid='app' className="app">
     <Header />
     <Form handleApiCall={callApi} />
     <Results data={data} requestParams={requestParams} isLoading={isLoading} />
