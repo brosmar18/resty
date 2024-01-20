@@ -22,7 +22,7 @@ This phase marks a significant stride towards a fully functional API interaction
 
 ### Links and Resources
 
-- Main [SandBox Deployment](https://qf2rg6-5173.csb.app/)
+- Main [SandBox Deployment](https://lj5mks-5173.csb.app/)
 
 ### Collaborators
 
