@@ -4,26 +4,21 @@
 
 ### Author: Bryan O. Garduno Gonzalez
 
-### Problem Domain
+### **Problem Domain**
 
-The RESTy application, a project designed in React, is entering its first phase of a four-phase development process. The primary objective in this initial phase is to establish the fundamental scaffolding of the application.
+RESTy, now in its second phase, continues its evolution into a more dynamic and interactive React application. This phase focuses on enhancing user interaction and functionality:
 
-In its current state, RESTy is a proof of concept built using class components. The transition to production requires a significant refactor: converting these class components into React functional components. This transformation aims to establish a stable and high-performing foundation for the application.
+- **Enhanced User Interaction**: RESTy now accepts user input for API URLs and REST methods, allowing dynamic API interaction.
 
-**Key tasks in this phase include:**
+- **Functional Component Transformation**: The conversion from class to functional components is extended to the `<App />`, leveraging the `useState` hook for state management.
 
-- Refactoring all child components of the `<App />` from class to functional components. The `<App />` component itself, acting as the container for all sub-components, will remain as a class component.
-- Ensuring that the base styles for `<App />` are incorporated within a `.scss` file imported in the App.jsx file.
-- Utilizing ES6 import syntax to import the `<Header />`, `<Footer />`, `<Results />`, and `<Form />` components.
-- Applying individual `.scss` files for styling each component, maintaining a clean and modular approach to styling.
-- Preserving the core application functionality throughout this transition.
+- **Live API Integration Preparation**: The groundwork is laid for live API connections, simulating real-world application scenarios. 
 
-**Specific functional requirements for the components include:**
+- **Dynamic Data Presentation**: The `<Results />` component is now equipped to display API responses, including headers and formatted JSON, enhancing the data presentation.
 
-- The `<Form />` component should feature an `onSubmit()` function. This function is responsible for updating the `<App />` component with form values through a function passed down as a prop.
-- The `<Results />` component should display mock API results, showcasing the application's ability to process and present data.
+- **Loading State Management**: Introduction of a loading state offers a more responsive user experience during API calls.
 
-This phase is pivotal for setting a robust and efficient groundwork for RESTy, enabling smooth and scalable future enhancements.
+This phase marks a significant stride towards a fully functional API interaction tool, setting the stage for further advancements in the RESTy application.
 
 ### Links and Resources
 
@@ -47,42 +42,39 @@ A .env file is included in local repository. A .env-sample file is uploaed to th
 
 ## Features
 
-The RESTy application, built using React, offers a suite of features designed to provide an intuitive and efficient user experience for interacting with APIs. Here's a breakdown of the key features based on the provided code:
+The RESTy application, now in its evolved phase, is a modern and dynamic tool for API interactions, built using React's functional components and advanced state management techniques. This brings significant improvements and new features:
 
-1. **Dynamic API Interaction**:
+1. **Functional Component Architecture**:
 
-   - The core functionality of RESTy revolves around interacting with APIs. Users can enter a URL to make API requests.
-   - The `<Form />` component handles the submission of these requests. It defaults to the GET method, but the structure allows for expansion to other HTTP methods like POST, PUT, and DELETE.
+   - Transitioned to using React's functional components with `useState` for state management, enhancing code readability and maintainability.
+   
+   - The `<App />` component, along with others like `<Form />`, `<Results />`, `<Header />`, and `<Footer />`, are now functional components.
+   
+2. **Enhanced API Interaction**:
 
-2. **Real-time Results Display**:
+   - The `<Form />` component enables users to input and select REST methods (GET, POST, PUT, DELETE) and URLs, offering dynamic interaction with APIs.
+   
+   - Users can submit API requests and view real-time responses.
+   
+3. **Dynamic Results Display**:
 
-   - The `<Results />` component dynamically displays the results of the API call.
-   - It showcases both the method used and the URL of the API request, along with the JSON formatted response data.
+   - The `<Results />` component displays API responses, including headers, method, URL, and results, in a user-friendly, pretty-printed JSON format.
+   
+   - It handles both the loading state and the display of fetched data, improving user interaction.
+   
+4. **Responsive and Interactive UI**:
 
-3. **Responsive Navigation**:
+   - Maintains the application's responsive design, ensuring a seamless experience across different devices.
+   
+   - The `<Header />` component features a responsive navigation bar with a mobile-friendly design.
+   
+   - The `<Footer />` component includes social media icons for enhanced user engagement.
+   
+5. **Comprehensive Testing**:
 
-   - The `<Header />` component includes a responsive navigation bar with links like "home", "history", and "help".
-   - It features a mobile-friendly design with a toggle menu, enhancing usability on smaller screens.
-
-4. **Scalable and Maintainable Code Structure**:
-
-   - Components are organized in a modular fashion, each with its own styling file (`.scss`), promoting maintainability and scalability.
-   - The use of ES6 import syntax and separation of concerns in components aligns with modern React best practices.
-
-5. **Stylish and Functional UI**:
-
-   - The application is styled using SCSS, offering a visually appealing interface.
-   - Distinct components like `<Header />`, `<Form />`, `<Results />`, and `<Footer />` are styled individually, allowing for a cohesive yet flexible design approach.
-
-6. **Social Media Integration**:
-
-   - The `<Footer />` component includes social media icons like Facebook, Instagram, GitHub, and LinkedIn, facilitating user engagement and connectivity.
-
-7. **Accessibility and User-Friendly Design**:
-   - The application's layout and design are user-friendly, with clear labels and interactive elements like buttons and input fields.
-   - Accessibility considerations can be observed in the clear labeling and structure of the components.
-
-By focusing on these features, RESTy aims to provide a seamless and efficient experience for users to make and view API requests, with a clean, modern user interface and responsive design.
+   - Implemented thorough testing for each component using Vitest and the React Testing Library ensuring robustness and reliability of the application.
+   
+These advancements position RESTy as an interactive and efficient tool for API exploration and testing, with a focus on modern React practices and user experience.
 
 ### Responsive Design
 
@@ -116,10 +108,45 @@ The RESTy application is designed with a focus on responsive design, ensuring a 
 
 By leveraging CSS grid, media queries, and React's state management, RESTy provides a robust and adaptable user interface, catering to the needs of users on both desktop and mobile platforms.
 
-#### Tests
 
-For this particular phase of the RESTy application development, testing is not a required component of the assignment. Therefore, no specific tests have been implemented or are necessary to run at this stage.
+## Tests 
+
+### Testing Setup and Implementation
+
+In this update of RESTy, I introduced a robust testing environment to ensure the functionality and reliability of the application. Key aspects include:
+
+- **Testing Framework**: Utilization of Vitest for effective React component and application logic testing.
+
+- **Test Environment Configuration**: Adjustments in `vite.config.js` and `.eslintrc.cjs` to align with the React Testing Library.
+
+- **Testing Scripts**: The `package.json` includes a test script for executing tests with coverage reporting.
+
+- **React Testing Integration**: Empowers user-centric testing for React components. 
+
+- **Global Test Setup**: Implemented in `tests/setup.js`, standardizing testing behaviors, including cleanup after each test.
+
+### Component Testing
+
+Detailed tests for each major component of RESTy have been implemented, as follows:
+
+- **App Component**: Checks for proper rendering of the main app component.
+
+- **Header Component**: Tests header, logo, navigation link rendering, and mobile menu functionality.
+
+- **Form Component**: Validates form rendering, URL input changes, method selections, and textarea visibility for POST and PUT methods.
+
+- **Results Component**: Assesses loading state, result text rendering, API data display, and "No Data" message for null data.
+
+- **Footer Component**: Ensures rendering of the footer, title "RESTy", copyright information, and social media icon presence.
+
+### Running the Tests
+
+To run the tests, execute the `npm test` command.
+
+### Incomplete or Skipped Tests  
+
+At this stage, all essential component tests have been implemented. Any future tests or enhancements will be noted in subsequent updates or phases.
 
 #### UML
 
-![State FLow Diagram](./public/assets/phase1UML.png);
+![State FLow Diagram: Phase 2](./public/assets/phase2UML.png);
