@@ -27,7 +27,8 @@ a {
 .menu__container {
   width: 250px;
   padding: 5px 20px;
-  border-right: 2px solid #fafafa;
+  border-right: 1px solid #fafafa11;
+  background-color: #000B2A;
 
   @include lg{
     width: max-content;
@@ -35,6 +36,7 @@ a {
 }
 
 .content__container {
+  background-color: #000B2A;
   padding: 5px 20px;
   width: 100%;
 }
