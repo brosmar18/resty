@@ -8,6 +8,9 @@
 
   .mobile-nav {
     display: block; 
+    display: flex;
+    padding: 1.5rem;
+    justify-content: flex-end;
   }
 
   @media (min-width: 768px) {
