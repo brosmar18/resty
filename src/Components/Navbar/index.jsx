@@ -1,6 +1,7 @@
 import { navLinks } from "../../Constants";
 import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 import "./Navbar.scss";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -9,7 +10,9 @@ const Navbar = () => {
       <ul className="nav__links">
         {navLinks.map((link) => (
           <li key={`nav-${link.label}`} className="nav__link">
-            {link.label}
+            <Link to={link.route}>
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>
