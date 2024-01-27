@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .page {
+    background-color: #000B2A;
+    color: #fafafa;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .menu__container {
+    width: 250px;
+    padding: 5px 20px;
+    border-right: 2px solid #384256;
+  }
+
+  .content__container {
+    padding: 5px 20px;
+    width: 100%;
+  }
