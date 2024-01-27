@@ -1,16 +1,16 @@
 import { useState } from "react";
-import "./App.scss";
+
+// import "./App.scss";
+import Form from "../../Components/Form";
 import Results from "../../Components/Results";
-import NewForm from "@/Components/NewForm";
 
 const App = () => {
-  const [open, setOpen] = useState(false);
   const [data, setData] = useState(null);
   const [requestParams, setRequestParams] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const callApi = (newRequestParams) => {
-    setIsLoading(true);
+    setIsLoading(true);+
     setRequestParams(newRequestParams);
 
     if (newRequestParams.url) {
@@ -38,18 +38,10 @@ const App = () => {
   };
 
   return (
-    <div data-testid="app" className="app">
-      <div className="app__info">
-        <h1>RESTy</h1>
-        <button onClick={() => setOpen(!open)}>Connect to API</button>
-      </div>
-      <Results
-        data={data}
-        requestParams={requestParams}
-        isLoading={isLoading}
-      />
-      {open && <NewForm setOpen={setOpen} handleApiCall={callApi} />}
-    </div>
+    <div data-testid='app' className="app">
+    <Form handleApiCall={callApi} />
+    <Results data={data} requestParams={requestParams} isLoading={isLoading} />
+  </div>
   );
 };
 

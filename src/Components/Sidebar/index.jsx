@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaHome, FaUser, FaEdit, FaCalendarAlt } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
+import { SiElement } from "react-icons/si";
 import './Sidebar.scss'
 
 const Sidebar = () => {
@@ -11,6 +12,11 @@ const Sidebar = () => {
         <Link to="/" className="sidebar__link">
           <FaHome size={25} />
           <p className="sidebar__link-title">Home</p>
+        </Link>
+        <Link to="/app" className="sidebar__link">
+        <SiElement size={25} />
+
+          <p className="sidebar__link-title">App</p>
         </Link>
         <Link to="/" className="sidebar__link">
           <FaUser size={25} />
