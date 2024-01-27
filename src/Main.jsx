@@ -16,7 +16,7 @@ function Main() {
     return (
       <div className="page">
         <Header />
-        <div className="container">
+        <div className="containers">
           <div className="menu__container">
             <Menu />
           </div>
