@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "./App.scss";
 import Results from "../../Components/Results";
-import NewForm from "@/Components/NewForm";
+import Form from "@/Components/Form";
 
 const App = () => {
-  const [open, setOpen] = useState(false);
   const [data, setData] = useState(null);
   const [requestParams, setRequestParams] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -41,14 +40,13 @@ const App = () => {
     <div data-testid="app" className="app">
       <div className="app__info">
         <h1>RESTy</h1>
-        <button onClick={() => setOpen(!open)}>Connect to API</button>
+        <Form  handleApiCall={callApi} />
       </div>
       <Results
         data={data}
         requestParams={requestParams}
         isLoading={isLoading}
       />
-      {open && <NewForm setOpen={setOpen} handleApiCall={callApi} />}
     </div>
   );
 };
