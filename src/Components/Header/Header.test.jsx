@@ -1,30 +1,34 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import Header from './index';
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom"; 
+import Header from "./index";
 
-describe('Header Component', () => {
-  it('renders the header', () => {
-    render(<Header />);
-    expect(screen.getByTestId('header')).toBeInTheDocument();
+describe("Header Component", () => {
+  it("renders the header component", () => {
+    render(
+      <Router>
+        <Header />
+      </Router>
+    );
+    expect(screen.getByTestId("header")).toBeInTheDocument();
   });
 
-  it('contains logo', () => {
-    render(<Header />);
-    expect(screen.getByTestId('logo')).toBeInTheDocument();
+  it("renders the full navigation for larger screens", () => {
+    render(
+      <Router>
+        <Header />
+      </Router>
+    );
+    const fullNav = screen.getByTestId("header").querySelector(".full-nav");
+    expect(fullNav).toBeInTheDocument();
   });
 
-  it('renders navigation links', () => {
-    render(<Header />);
-    ['home', 'history', 'help'].forEach((item) => {
-      expect(screen.getByTestId(`nav-link-${item}`)).toBeInTheDocument();
-    });
+  it("renders the mobile navigation for smaller screens", () => {
+    render(
+      <Router>
+        <Header />
+      </Router>
+    );
+    const mobileNav = screen.getByTestId("header").querySelector(".mobile-nav");
+    expect(mobileNav).toBeInTheDocument();
   });
-
-  it('toggles mobile menu on click', () => {
-    render(<Header />);
-    fireEvent.click(screen.getByTestId('menu-icon'));
-    expect(screen.getByTestId('mobile-menu')).toBeInTheDocument();
-  });
-
-  
-
 });

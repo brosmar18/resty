@@ -1,0 +1,42 @@
+@import '../../styles/responsive.scss';
+
+.sidebar {
+    .sidebar__item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+        align-items: flex-start;
+
+        .sidebar__item-title {
+            font-size: 15px;
+            font-weight: 200;
+            color: rgb(189, 177, 177);
+            text-transform: uppercase;
+
+            @include lg{
+                display: none;
+              }
+        }
+
+        .sidebar__link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 5px;
+
+            &:hover {
+                color: #0886D6;
+            }
+
+            .sidebar__link-title {
+                @include lg{
+                    display: none;
+                }
+            }
+        }
+    }
+
+
+}

@@ -1,0 +1,42 @@
+@import './styles/responsive.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page {
+  background-color: #000B2A;
+  color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.containers {
+  flex: 1;
+  display: flex;
+}
+
+.menu__container {
+  width: 250px;
+  padding: 5px 20px;
+  border-right: 1px solid #fafafa11;
+  background-color: #000B2A;
+
+  @include lg{
+    width: max-content;
+  }
+}
+
+.content__container {
+  background-color: #000B2A;
+  padding: 5px 20px;
+  width: 100%;
+}
