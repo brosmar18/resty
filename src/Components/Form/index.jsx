@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./Form.scss";
-import { IoCloseCircleOutline } from "react-icons/io5";
 import {
   Dialog,
   DialogContent,

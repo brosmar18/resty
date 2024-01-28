@@ -4,25 +4,14 @@
 
 ### Author: Bryan O. Garduno Gonzalez
 
-### **Problem Domain**
+### Problem Domain
 
-RESTy, now in its second phase, continues its evolution into a more dynamic and interactive React application. This phase focuses on enhancing user interaction and functionality:
+RESTy, now in phase three of development, has undergone a significant transformation, embracing the capability to connect to live APIs to fetch and display remote data. This phase concentrates on empowering users with the ability to issue GET requests to retrieve data from any API of their choice, making a pivotal shift towards real-world applicability. 
 
-- **Enhanced User Interaction**: RESTy now accepts user input for API URLs and REST methods, allowing dynamic API interaction.
-
-- **Functional Component Transformation**: The conversion from class to functional components is extended to the `<App />`, leveraging the `useState` hook for state management.
-
-- **Live API Integration Preparation**: The groundwork is laid for live API connections, simulating real-world application scenarios. 
-
-- **Dynamic Data Presentation**: The `<Results />` component is now equipped to display API responses, including headers and formatted JSON, enhancing the data presentation.
-
-- **Loading State Management**: Introduction of a loading state offers a more responsive user experience during API calls.
-
-This phase marks a significant stride towards a fully functional API interaction tool, setting the stage for further advancements in the RESTy application.
 
 ### Links and Resources
 
-- Main [SandBox Deployment](https://lj5mks-5173.csb.app/)
+- Main [SandBox Deployment]()
 
 ### Collaborators
 
@@ -42,71 +31,51 @@ A .env file is included in local repository. A .env-sample file is uploaed to th
 
 ## Features
 
-The RESTy application, now in its evolved phase, is a modern and dynamic tool for API interactions, built using React's functional components and advanced state management techniques. This brings significant improvements and new features:
+In Phase 3, RESTy's enhancements focus on improving user interaction and responsiveness. With `react-router-dom`, users enjoy dynamic routing for seamless navigation. The application's layout is standardized across routes, and `@tanstack/react-query` enhances data management. Navigation is streamlined with responsive Navbar and MobileNav components. A new grid layout on the Home page sets the stage for displaying dynamic API data, and the use of u`seEffect()` allows for real-time data fetching, underscoring RESTy's evolution into an interactive API tool.  
 
-1. **Functional Component Architecture**:
+### React Router DOM  
 
-   - Transitioned to using React's functional components with `useState` for state management, enhancing code readability and maintainability.
-   
-   - The `<App />` component, along with others like `<Form />`, `<Results />`, `<Header />`, and `<Footer />`, are now functional components.
-   
-2. **Enhanced API Interaction**:
+The incorporation of `react-router-dom` brings in dynamic client-side routing, enabling RESTy to render different components based on the browser's URL. This is achieved without a full page reload, offering a fluid and app-like user experience. Key elements from `react-router-dom` used in RESTY include:  
 
-   - The `<Form />` component enables users to input and select REST methods (GET, POST, PUT, DELETE) and URLs, offering dynamic interaction with APIs.
-   
-   - Users can submit API requests and view real-time responses.
-   
-3. **Dynamic Results Display**:
+- `createBrowserRouter`: Utilized to configure and create a new router instance. This function sets up the routes for the application, defining the paths and the corresponding component to render.  
 
-   - The `<Results />` component displays API responses, including headers, method, URL, and results, in a user-friendly, pretty-printed JSON format.
-   
-   - It handles both the loading state and the display of fetched data, improving user interaction.
-   
-4. **Responsive and Interactive UI**:
+- `RouterProvider`: Acts as the router context provider, wrapping the application's component tree. This allows any component within the tree to access routing functionality, such as navigation and route parameters.  
+- `Outlet`: Serves as a placeholder component that renders the current route's child components. It's used within the layout component to dynamically display the content based on the current route.  
 
-   - Maintains the application's responsive design, ensuring a seamless experience across different devices.
-   
-   - The `<Header />` component features a responsive navigation bar with a mobile-friendly design.
-   
-   - The `<Footer />` component includes social media icons for enhanced user engagement.
-   
-5. **Comprehensive Testing**:
+#### Layout Component  
 
-   - Implemented thorough testing for each component using Vitest and the React Testing Library ensuring robustness and reliability of the application.
-   
-These advancements position RESTy as an interactive and efficient tool for API exploration and testing, with a focus on modern React practices and user experience.
+The `Main.jsx` file defines a `layout` component that structures the application's main layout. This layout includes the header, sidebars, content area (where `Outlet` is placed to render routed components), and footer. This design ensures a consistent look and feel across different pages while allowing for dynamic content rendering based on the route.  
 
-### Responsive Design
+#### Query Client
 
-The RESTy application is designed with a focus on responsive design, ensuring a seamless user experience across various devices and screen sizes. This responsiveness is achieved through a combination of CSS grid layout and media queries, alongside dynamic component rendering in React. Here's how the application adapts to different devices:
+RESTy employs `@tanstack/react-query` for efficient data fetching and state management for server state. The `QueryClient` instance encapsulates the configuration and state for queries and mutations, providing a powerful caching and synchronization mechanism.  
 
-1. **Grid-Based Layout**:
+- `QueryClientProvider`: This component wraps the app's content area, making the `QueryClient` available throughout the component tree. This enables any child component to use hooks like `useQuery` for data fetching, benefiting from the automatic background updates and cache management.  
 
-   - The `.app` class in `App.scss` uses a CSS grid layout to define the structure of the application.
-   - The default grid template divides the page into three columns and three rows, assigning specific areas for the header, form, results, and footer.
-   - This layout provides a clean and organized structure for larger screens.
+#### Navigation Components  
 
-2. **Media Queries for Mobile Responsiveness**:
+RESTy's navigation is enhanced with `Navbar` and `MobileNav` components, leveraging `Link` from `react-router-dom` for declarative, accessible navigation. These components utilize a list of navigation links, providing users with a seamless way to navigate between different sections of the application, such as Home, App, History, About, and Contact pages.  
 
-   - A media query in `App.scss` targets screens with a maximum width of 768px, adjusting the grid layout to a single column format.
-   - This change stacks the header, form, results, and footer vertically, optimizing the layout for mobile devices.
+- `Link`: Used within the navigation components to create accessible navigation items that update the browser's URL without a page reload, guiding users through the application's routes.  
 
-3. **Dynamic Navigation Bar**:
+### Updated Responsive Design  
 
-   - The `<Header />` component in `Header/index.jsx` utilizes React's `useState` to manage the navigation bar's state.
-   - On smaller screens, a toggle icon (`HiMenuAlt4`) is displayed. When clicked, it expands into a full-screen navigation menu, providing easy access to links like "home", "history", and "help".
-   - This dynamic behavior ensures the navigation bar remains functional and accessible on mobile devices.
+Phase 3 of RESTy advances the user interface with a sophisticated responsive design and sets the stage for a dashboard-style layout on the Home page. This development enhances the application's adaptability across various devices, from desktops to smartphones, ensuring a seamless user experience.  
 
-4. **Adaptive Styling**:
+The `Header` component dynamically toggles between the `Navbar` for desktop and `MobileNav` for mobile devices, employing media queries to optimize display for all screen sizes. The `MobileNav` leverages the `Sheet` component from the `shadcn/ui` library to offer a modern, slide-out menu, enriching mobile navigation with an interactive element.  
 
-   - In `Header.scss`, media queries control the visibility of the navigation links. The standard horizontal navigation bar is hidden on smaller screens, replaced by the mobile-friendly toggle menu.
-   - Styling for the mobile menu (`nav__mobile`) is activated under 768px screen width, ensuring that the user interface remains intuitive and uncluttered.
+On the Home page, a grid-based layout sets the foundation for a dashboard that will eventually display dynamic data, aligning with RESTy's core functionality of API interaction. This grid layout, designed with CSS grid and responsive media queries, adapts smoothly across different viewport sizes, transitioning from a multi-column arrangement on larger screens to a single-column format on smaller ones. Key grid items are designed to span multiple rows and columns, adding visual interest and flexibility to accommodate diverse content types.  
 
-5. **Enhanced User Experience**:
-   - The application's responsive design not only adjusts to screen size changes but also maintains a consistent look and feel.
-   - This design approach enhances the user experience, making it easy to navigate and interact with the application regardless of the device used.
+### Leveraging `useEffect()` for Dynamic Data Fetching  
 
-By leveraging CSS grid, media queries, and React's state management, RESTy provides a robust and adaptable user interface, catering to the needs of users on both desktop and mobile platforms.
+In Phase 3, RESTy uses the `useEffect()` hook to enhance the data fetching capabilities, enabling dynamic API interactions based on the user input. This strategic implementation is pivotal for the real-time retrieval and display of API data, reflecting RESTy's evolution into a more interactive and responsive application.  
+
+#### Dynamic API Calls  
+The `App` component utilizes `useEffect()` to monitor changes to `requestParams`, a state that encapsulates the API request details input by the user through the `Form` component. Upon detecting changes, `useEffect()` triggers `fetchData`, an asynchronous function that constructs and executes the API call using the specified parameters, including the URL, HTTP method, and, when applicable, the request body.  
+
+#### Responsive UI Updates  
+
+To keep the user informed, RESTy introduces a loading state managed by `useState()`, which is toggled by `setIsLoading()` within `useEffect()`. This loading indicator provides immediate feedback upon initiating an API call, enhancing the user experience by signaling the application is processing their request.
 
 
 ## Tests 
@@ -129,15 +98,19 @@ In this update of RESTy, I introduced a robust testing environment to ensure the
 
 Detailed tests for each major component of RESTy have been implemented, as follows:
 
-- **App Component**: Checks for proper rendering of the main app component.
+- **Header Component**: Verifies the component's rendering, including the full navigation for larger screens and the mobile navigation for smaller screens, ensuring adaptive navigation layout based on screen size. 
 
-- **Header Component**: Tests header, logo, navigation link rendering, and mobile menu functionality.
+- **Navbar Component**: Validates the rendering of Navbar, including the logo, all specified navigation links, and social media icons, ensuring comprehensive navigation and branding elements are displayed as intended. 
 
-- **Form Component**: Validates form rendering, URL input changes, method selections, and textarea visibility for POST and PUT methods.
+- **MobileNav Component**: Tests the visibility of the mobile navigation trigger and its functionality to reveal navigation content upon interaction, ensuring the mobile navigation's responsive and interactive features are operational.
 
-- **Results Component**: Assesses loading state, result text rendering, API data display, and "No Data" message for null data.
+- **Form Component**: Validates the form's functionality, including URL input handling, method selection responsiveness, and conditional rendering of the textarea for POST and PUT methods, ensuring user inputs are correctly captured and processed.
 
-- **Footer Component**: Ensures rendering of the footer, title "RESTy", copyright information, and social media icon presence.
+- **Results Component**: Confirms the rendering of loading states, the display of request parameters, the presentation of fetched data in a readable format, and the visibility of a "No Data" message when no data is available, ensuring comprehensive feedback based on the API response.
+
+- **Sidebar Component**: Ensures the sidebar's visibility and verifies the presence of main, general, and maintenance sections along with their respective links, confirming the component's role in facilitating navigation within the application.
+
+- **Footer Component**: Confirms the rendering of the footer and checks for the correct display of copyright information, ensuring the application's footer provides consistent and accurate attribution across all pages.
 
 ### Running the Tests
 
@@ -149,4 +122,4 @@ At this stage, all essential component tests have been implemented. Any future t
 
 #### UML
 
-![State FLow Diagram: Phase 2](./public/assets/phase2UML.png);
+![State FLow Diagram: Phase 2](./public/assets/phase3UML.png);
