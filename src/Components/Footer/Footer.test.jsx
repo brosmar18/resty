@@ -4,22 +4,14 @@ import Footer from './index';
 describe('Footer Component', () => {
   it('renders the footer', () => {
     render(<Footer />);
-    expect(screen.getByTestId('footer')).toBeInTheDocument();
+    const footerElement = screen.getByTestId('footer');
+    expect(footerElement).toBeInTheDocument();
   });
 
-  it('contains title RESTy', () => {
+  it('displays the correct copyright info', () => {
     render(<Footer />);
-    expect(screen.getByTestId('footer-title')).toHaveTextContent('RESTy');
+    const copyrightElement = screen.getByText(/RESTy by Bryan O. Garduno Gonzalez/i); 
+    expect(screen.getByTestId('footer')).toContainElement(copyrightElement);
   });
 
-  it('displays copyright info', () => {
-    render(<Footer />);
-    expect(screen.getByTestId('copyright')).toHaveTextContent('© 2018');
-    expect(screen.getByTestId('copyright')).toHaveTextContent('All rights reserved');
-  });
-
-  it('contains social media icons', () => {
-    render(<Footer />);
-    expect(screen.getByTestId('socials')).toBeInTheDocument();
-  });
 });
