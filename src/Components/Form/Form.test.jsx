@@ -2,36 +2,42 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Form from './index';
 
 describe('Form Component', () => {
-  it('renders correctly', () => {
+  const setup = async () => {
     render(<Form handleApiCall={() => {}} />);
-    expect(screen.getByTestId('form')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('form-trigger')); // Open the dialog
+    await screen.findByTestId('form-content'); // Wait for the form content to be visible
+  };
+
+  it('renders the URL input correctly', async () => {
+    await setup();
+    expect(screen.getByTestId('url-input')).toBeInTheDocument();
   });
 
-  it('changes URL input correctly', () => {
-    render(<Form handleApiCall={() => {}} />);
+  it('changes URL input correctly', async () => {
+    await setup();
     const urlInput = screen.getByTestId('url-input');
     fireEvent.change(urlInput, { target: { value: 'https://test.com' } });
     expect(urlInput.value).toBe('https://test.com');
   });
 
-  it('changes method on button click', () => {
-    render(<Form handleApiCall={() => {}} />);
-    const postButton = screen.getByTestId('post-method');
-    fireEvent.click(postButton);
-    expect(postButton.className).toContain('active');
+  it('changes method on button click', async () => {
+    await setup();
+    const methodButton = screen.getByTestId('post-method');
+    fireEvent.click(methodButton);
+    expect(methodButton).toHaveClass('active');
   });
 
-  it('renders textarea for POST and PUT methods', () => {
-    const { rerender } = render(<Form handleApiCall={() => {}} />);
-    
-    // Test for POST method
+  it('renders textarea for POST and PUT methods', async () => {
+    await setup();
+
+    // Check for POST method
     fireEvent.click(screen.getByTestId('post-method'));
-    expect(screen.getByTestId('body-textarea')).toBeInTheDocument();
-    
-    // Test for PUT method
-    rerender(<Form handleApiCall={() => {}} />);
-    fireEvent.click(screen.getByTestId('put-method'));
-    expect(screen.getByTestId('body-textarea')).toBeInTheDocument();
-  });
+    let textarea = screen.getByTestId('body-textarea');
+    expect(textarea).toBeInTheDocument();
 
+    // Check for PUT method
+    fireEvent.click(screen.getByTestId('put-method'));
+    textarea = screen.getByTestId('body-textarea');
+    expect(textarea).toBeInTheDocument();
+  });
 });

@@ -33,9 +33,9 @@ const Form = (props) => {
   return (
     <Dialog>
       <DialogTrigger>
-        <span className="trigger">Connect to API!</span>
+        <span data-testid='form-trigger' className="trigger">Connect to API!</span>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent data-testid='form-content'>
         <DialogHeader>
           <DialogTitle>
             Enter URL
