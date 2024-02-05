@@ -38,6 +38,7 @@ const History = ({ history }) => {
                 className="react-json-view"
                 src={entry.results}
                 theme="atom"
+                collapsed={true}
               />
             </div>
           )}

@@ -11,6 +11,7 @@
 
   h2 {
     color: $primary;
+    font-size: 2rem;
   }
 
   .history-entry {
@@ -59,7 +60,6 @@
 
       .react-json-view {
         width: 100%;
-        font-size: 0.8rem;
 
         @include sm {
           font-size: 0.6rem;
