@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaHome, FaUser, FaEdit, FaCalendarAlt } from "react-icons/fa";
+import { FaHome, FaUser, FaEdit, FaCalendarAlt, FaHistory } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import './Sidebar.scss';
 
@@ -11,6 +11,10 @@ const Sidebar = () => {
         <Link to="/" className="sidebar__link" data-testid="sidebar-link-home">
           <FaHome size={20} />
           <p className="sidebar__link-title">Home</p>
+        </Link>
+        <Link to="/history" className="sidebar__link" data-testid="sidebar-link-home">
+          <FaHistory size={20} />
+          <p className="sidebar__link-title">History</p>
         </Link>
         <Link to="/" className="sidebar__link" data-testid="sidebar-link-user">
           <FaUser size={20} />
