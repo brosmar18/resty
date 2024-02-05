@@ -6,12 +6,12 @@
 
 ### Problem Domain
 
-RESTy, now in phase three of development, has undergone a significant transformation, embracing the capability to connect to live APIs to fetch and display remote data. This phase concentrates on empowering users with the ability to issue GET requests to retrieve data from any API of their choice, making a pivotal shift towards real-world applicability. 
+RESTy, now in phase three of development, has undergone a significant transformation, embracing the capability to connect to live APIs to fetch and display remote data. This phase concentrates on empowering users with the ability to see the history of API requests. This feature is set up using history state management as well as local storage.  
 
 
 ### Links and Resources
 
-- Main [SandBox Deployment](https://776c72-5173.csb.app/)
+- Main [SandBox Deployment]()
 
 ### Collaborators
 
@@ -31,7 +31,19 @@ A .env file is included in local repository. A .env-sample file is uploaed to th
 
 ## Features
 
-In Phase 3, RESTy's enhancements focus on improving user interaction and responsiveness. With `react-router-dom`, users enjoy dynamic routing for seamless navigation. The application's layout is standardized across routes, and `@tanstack/react-query` enhances data management. Navigation is streamlined with responsive Navbar and MobileNav components. A new grid layout on the Home page sets the stage for displaying dynamic API data, and the use of u`seEffect()` allows for real-time data fetching, underscoring RESTy's evolution into an interactive API tool.  
+In Phase 4, I've introduced significant enhancements to improve the state management and user experience. These updates focus on making the application more robust and user-friendly, particularly in managing API calls and their history. 
+
+### State Management with `useReducer()`
+
+The app has transitioned to using the `useReducer()` hook for state management within the `App` component.  This approach provides a more manageable and predictable state architecture, especially as the complexity of the application grows. The `useReducer()` hook allows us to centralize the state logic, making it easier to maintain and understand the flow of data and actions within the app.
+
+### History State Management
+
+A key feature of this phase is the introduction of a history state, which captures the details of each API call made by the user. This includes the HTTP method, the request URL, and the response data. The history feature enables users to view their past requests, fostering a more intuitive and efficient workflow, particularly for repetitive API testing and exploration.
+
+### Integration with Local Storage
+
+To enhance the persistency of the application's state, we've integrated local storage to save the history of API calls. This means that the user's history is preserved across browser sessions, allowing for immediate access to past requests upon returning to the application. The history state is automatically updated in local storage whenever a new API call is made, ensuring that the user's activity log is always up-to-date.
 
 ### React Router DOM  
 
@@ -122,4 +134,4 @@ At this stage, all essential component tests have been implemented. Any future t
 
 #### UML
 
-![State FLow Diagram: Phase 2](./public/assets/phase3UML.png);
+![State FLow Diagram: Phase 4]();
