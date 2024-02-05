@@ -1,11 +1,13 @@
+@import '../../styles/responsive.scss';
+@import '../../styles/variables.scss';
+
 .results {
     grid-area: results;
-    background-color: #f8f8f8b6;
-    border: 1px solid #e1e1e1;
+    border: 1px solid $secondary;
     border-radius: 5px;
     padding: 1rem;
-    overflow: auto;
-    max-height: 700px;
+    overflow: hidden;
+    max-width: 100%;
   
     .results__text {
       p {
@@ -22,6 +24,7 @@
         }
       }
     }
+
 
     .noData {
       color: black;
@@ -40,8 +43,8 @@
         }
       }
   
-      code {
-        font-size: 0.8rem;
+      .react-json-view {
+        font-size: 0.6rem;
       }
     }
   }

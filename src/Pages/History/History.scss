@@ -47,6 +47,10 @@
         box-shadow: 0 2px #666;
         transform: translateY(4px);
       }
+
+      @include sm {
+        padding: 5px 10px;
+      }
     }
 
     .history-results {
@@ -58,7 +62,7 @@
         font-size: 0.8rem;
 
         @include sm {
-          font-size: 0.7rem;
+          font-size: 0.6rem;
         }
       }
     }

@@ -1,5 +1,6 @@
 import JsonView from "react18-json-view";
 import "react18-json-view/src/style.css";
+import './Results.scss';
 
 const Results = ({ data, requestParams, isLoading }) => {
   return (
@@ -27,6 +28,7 @@ const Results = ({ data, requestParams, isLoading }) => {
               <JsonView
                 src={data}
                 theme="atom"
+                className="react-json-view"
               />
             ) : (
               <p data-testid="no-data" className="noData">
