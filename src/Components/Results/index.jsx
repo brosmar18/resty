@@ -1,6 +1,6 @@
-import { JsonEditor as Editor } from "jsoneditor-react";
-import "jsoneditor-react/es/editor.min.css";
-import "./Results.scss";
+import JsonView from "react18-json-view";
+import "react18-json-view/src/style.css";
+import './Results.scss';
 
 const Results = ({ data, requestParams, isLoading }) => {
   return (
@@ -25,15 +25,10 @@ const Results = ({ data, requestParams, isLoading }) => {
           </div>
           <div data-testid="result-data" className="results__json">
             {data ? (
-              <Editor
-                value={data}
-                mode="view"
-                theme="ace/theme/github"
-                history={false}
-                navigationBar={false}
-                statusBar={false}
-                readOnly={true}
-                search={false}
+              <JsonView
+                src={data}
+                theme="atom"
+                className="react-json-view"
               />
             ) : (
               <p data-testid="no-data" className="noData">

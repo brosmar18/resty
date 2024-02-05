@@ -20,7 +20,7 @@ describe('Sidebar Component', () => {
     );
     expect(screen.getByTestId('sidebar-main')).toBeInTheDocument();
     expect(screen.getByTestId('sidebar-link-home')).toHaveTextContent('Home');
-    expect(screen.getByTestId('sidebar-link-app')).toHaveTextContent('App');
+    expect(screen.getByTestId('sidebar-link-history')).toHaveTextContent('History');
     expect(screen.getByTestId('sidebar-link-user')).toHaveTextContent('User');
   });
 

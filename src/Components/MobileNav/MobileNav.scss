@@ -1,6 +1,8 @@
+@import '../../styles/variables.scss';
+
 .sheet-content {
-  background-color: #000b2a !important;
-  color: #fafafa;
+  background-color: $background !important;
+  color: $text;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -22,7 +24,7 @@
       line-height: 24px;
 
       &:hover {
-        color: #0886d6;
+        color: $secondary;
       }
     }
   }
