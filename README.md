@@ -134,4 +134,4 @@ At this stage, all essential component tests have been implemented. Any future t
 
 #### UML
 
-![State FLow Diagram: Phase 4]();
+![State FLow Diagram: Phase 4](./public/assets/phase4UML.png);
