@@ -1,8 +1,8 @@
+@import '../../styles/variables.scss';
+
 .footer {
   grid-area: footer;
-  background-color: #000B2A;
-  color: rgba(229, 231, 235, 1);
-  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.784);
+  box-shadow: 0 10px 15px -3px $accent;
   width: 100%;
   padding: 15px;
 
