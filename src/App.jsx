@@ -21,13 +21,15 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'SET_DATA':
+    case "LOAD_HISTORY":
+      return { ...state, history: action.payload };
+    case "SET_DATA":
       return { ...state, data: action.payload };
-    case 'SET_REQUEST_PARAMS':
+    case "SET_REQUEST_PARAMS":
       return { ...state, requestParams: action.payload };
-    case 'SET_LOADING':
+    case "SET_LOADING":
       return { ...state, isLoading: action.payload };
-    case 'ADD_TO_HISTORY':
+    case "ADD_TO_HISTORY":
       return { ...state, history: [...state.history, action.payload] };
     default:
       throw new Error();
@@ -35,14 +37,14 @@ function reducer(state, action) {
 }
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, init);
   const { data, requestParams, isLoading, history } = state;
 
   useEffect(() => {
     const fetchData = async () => {
       if (!requestParams.url) return;
 
-      dispatch({ type: 'SET_LOADING', payload: true });
+      dispatch({ type: "SET_LOADING", payload: true });
       try {
         const response = await fetch(requestParams.url, {
           method: requestParams.method,
@@ -58,21 +60,43 @@ const App = () => {
         if (!response.ok) throw new Error("Network response was not ok.");
 
         const newData = await response.json();
-        dispatch({ type: 'SET_DATA', payload: newData });
+        dispatch({ type: "SET_DATA", payload: newData });
         dispatch({
-          type: 'ADD_TO_HISTORY',
+          type: "ADD_TO_HISTORY",
           payload: { ...requestParams, results: newData },
         });
       } catch (error) {
-        console.error("There has been a problem with your fetch operation:", error);
-        dispatch({ type: 'SET_DATA', payload: null });
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+        dispatch({ type: "SET_DATA", payload: null });
       } finally {
-        dispatch({ type: 'SET_LOADING', payload: false });
+        dispatch({ type: "SET_LOADING", payload: false });
       }
     };
 
     fetchData();
   }, [requestParams]);
+
+  useEffect(() => {
+    const storedHistory = localStorage.getItem("history");
+    if (storedHistory) {
+      dispatch({ type: "LOAD_HISTORY", payload: JSON.parse(storedHistory) });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("history", JSON.stringify(state.history));
+  }, [state.history]);
+
+  function init() {
+    const storedHistory = localStorage.getItem("history");
+    return {
+      ...initialState,
+      history: storedHistory ? JSON.parse(storedHistory) : [],
+    };
+  }
 
   const Layout = () => {
     return (
@@ -100,8 +124,15 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <Home data={data} dispatch={dispatch} requestParams={requestParams} isLoading={isLoading} />,
-        },        
+          element: (
+            <Home
+              data={data}
+              dispatch={dispatch}
+              requestParams={requestParams}
+              isLoading={isLoading}
+            />
+          ),
+        },
         {
           path: "/history",
           element: <History history={history} dispatch={dispatch} />,
