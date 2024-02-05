@@ -12,7 +12,7 @@ const Sidebar = () => {
           <FaHome size={20} />
           <p className="sidebar__link-title">Home</p>
         </Link>
-        <Link to="/history" className="sidebar__link" data-testid="sidebar-link-home">
+        <Link to="/history" className="sidebar__link" data-testid='sidebar-link-history'>
           <FaHistory size={20} />
           <p className="sidebar__link-title">History</p>
         </Link>
