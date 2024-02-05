@@ -1,0 +1,99 @@
+@import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
+
+.history {
+  color: $text;
+  background-color: $background;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  padding: 20px;
+
+  h2 {
+    color: $primary;
+  }
+
+  .history-entry {
+    margin-bottom: 20px;
+    border-bottom: 1px solid $secondary;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .history-entry__details {
+      margin-bottom: 10px;
+    }
+
+    .toggle-results {
+      background-color: $accent;
+      color: $background;
+      border: none;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      position: relative;
+      box-shadow: 0 5px #999;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: darken($accent, 10%);
+      }
+
+      &:active {
+        background-color: darken($accent, 10%);
+        box-shadow: 0 2px #666;
+        transform: translateY(4px);
+      }
+    }
+
+    .history-results {
+      overflow-x: auto;
+      max-width: 100%;
+
+      .react-json-view {
+        width: 100%;
+        font-size: 0.8rem;
+
+        @include sm {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}
+
+@include md {
+  .history-entry {
+    .history-entry__details {
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+    .toggle-results {
+      padding: 8px 15px;
+    }
+  }
+}
+
+@include lg {
+  .history {
+    max-width: $lg;
+    margin: auto;
+  }
+}
+
+@include xl {
+  .history {
+    max-width: $xl;
+  }
+}
+
+@include xxl {
+  .history {
+    max-width: $xxl;
+  }
+}
