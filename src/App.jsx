@@ -1,28 +1,48 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Results from "./Components/Results";
-import Form from "./Components/Form";
+import { useReducer, useEffect } from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import History from "./Pages/History";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-import "./App.scss";
 import Home from "./Pages/Home";
 import Sidebar from "./Components/Sidebar";
+import "./App.scss";
+
 const queryClient = new QueryClient();
 
+const initialState = {
+  data: null,
+  requestParams: {},
+  isLoading: false,
+  history: [],
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_DATA':
+      return { ...state, data: action.payload };
+    case 'SET_REQUEST_PARAMS':
+      return { ...state, requestParams: action.payload };
+    case 'SET_LOADING':
+      return { ...state, isLoading: action.payload };
+    case 'ADD_TO_HISTORY':
+      return { ...state, history: [...state.history, action.payload] };
+    default:
+      throw new Error();
+  }
+}
+
 const App = () => {
-  const [data, setData] = useState(null);
-  const [requestParams, setRequestParams] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { data, requestParams, isLoading, history } = state;
 
   useEffect(() => {
     const fetchData = async () => {
       if (!requestParams.url) return;
 
-      setIsLoading(true);
+      dispatch({ type: 'SET_LOADING', payload: true });
       try {
         const response = await fetch(requestParams.url, {
           method: requestParams.method,
@@ -38,21 +58,21 @@ const App = () => {
         if (!response.ok) throw new Error("Network response was not ok.");
 
         const newData = await response.json();
-        setData(newData);
+        dispatch({ type: 'SET_DATA', payload: newData });
+        dispatch({
+          type: 'ADD_TO_HISTORY',
+          payload: { ...requestParams, results: newData },
+        });
       } catch (error) {
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error
-        );
-        setData(null);
+        console.error("There has been a problem with your fetch operation:", error);
+        dispatch({ type: 'SET_DATA', payload: null });
       } finally {
-        setIsLoading(false);
+        dispatch({ type: 'SET_LOADING', payload: false });
       }
     };
 
     fetchData();
   }, [requestParams]);
-
 
   const Layout = () => {
     return (
@@ -64,7 +84,7 @@ const App = () => {
           </div>
           <div className="content__container">
             <QueryClientProvider client={queryClient}>
-              <Outlet />
+              <Outlet context={{ state, dispatch }} />
             </QueryClientProvider>
           </div>
         </div>
@@ -80,11 +100,11 @@ const App = () => {
       children: [
         {
           path: "/",
-          element: <Home data={data} setData={setData} requestParams={requestParams} setRequestParams={setRequestParams} isLoading={isLoading} />,
-        },
+          element: <Home data={data} dispatch={dispatch} requestParams={requestParams} isLoading={isLoading} />,
+        },        
         {
           path: "/history",
-          element: <History />,
+          element: <History history={history} dispatch={dispatch} />,
         },
         {
           path: "/about",
