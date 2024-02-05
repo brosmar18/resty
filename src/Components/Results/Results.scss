@@ -3,11 +3,11 @@
 
 .results {
     grid-area: results;
-    border: 1px solid $secondary;
     border-radius: 5px;
     padding: 1rem;
     overflow: hidden;
     max-width: 100%;
+    background-color: $background;
   
     .results__text {
       p {

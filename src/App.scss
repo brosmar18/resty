@@ -23,12 +23,14 @@ a {
 .containers {
   flex: 1;
   display: flex;
+  background-color: $background;
 }
 
 .menu__container {
   width: 200px;
   padding: 5px;
-  border-right: 1px solid $accent;
+  border-right: 1px solid rgba(203, 32, 80, 0.1);
+  background-color: $background;
 
   @include lg{
     width: max-content;
